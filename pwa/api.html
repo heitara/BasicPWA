@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Temperature converter API</title>
+    <script type="module" >
+      import { ResponseBuilder } from "./CustomClass.js";
+      export const getResponse = () => {
+        const responseBuilder = new ResponseBuilder();
+        return responseBuilder.getResponse();
+      };
+    </script>
+    <script >
+    const getResponse2 = () => {
+        return "responseBuilder.getResponse()";
+      };
+      console.log("api")
+    </script>
+  </head>
+  <body>
+  </body>
+</html>
