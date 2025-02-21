@@ -12,7 +12,11 @@ const callExtensionAPI = (method) => {
   }
   chrome.runtime.sendMessage(STATIC_EXTENSION_ID, {
     methodName: method,
-  });
+  },
+  (response) => {
+    console.log("Received response from extension:", response);
+  }
+  );
 };
 // callExtensionAPI('callRestart'); // call a function 
 
