@@ -2,11 +2,33 @@ import { ResponseBuilder } from "./CustomClass.js";
 
 const CACHE_NAME = `temperature-converter-v1`;
 
+const STATIC_EXTENSION_ID = 'eifdgggpmlienaomdighcmmfojmledjk';
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const callExtensionAPI = (method) => {
+  console.log(`Call extension method:`, method);
+  chrome.runtime.sendMessage(STATIC_EXTENSION_ID, {
+    methodName: method,
+  });
+};
+// callExtensionAPI('callRestart'); // call a function 
+
+const MESSAGE_TYPE_EXTENSION = "MSG_EXTENSION";
+
+
 const broadcast = new BroadcastChannel("channel-123");
 broadcast.onmessage = (event) => {
   if (event.data && event.data.type === "MSG_ID") {
     console.log(`SW:`, event.data);
   }
+  if (event.data && event.data.type === MESSAGE_TYPE_EXTENSION) {
+    console.log(`Extension:`, event.data);
+    let extensionFunctionName = event.data.extFunc;
+    if (extensionFunctionName !== undefined) {
+      console.log(`Invoke ext. function:`, extensionFunctionName);
+      callExtensionAPI(extensionFunctionName);
+    }
+  }
+
   broadcast.postMessage({ type: "MSG_ID", data: "pong" });
 };
 
