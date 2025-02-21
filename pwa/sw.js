@@ -22,14 +22,14 @@ broadcast.onmessage = (event) => {
   }
   if (event.data && event.data.type === MESSAGE_TYPE_EXTENSION) {
     console.log(`Extension:`, event.data);
-    let extensionFunctionName = event.data.extFunc;
+    let extensionFunctionName = event.data.data.extFunc;
     if (extensionFunctionName !== undefined) {
       console.log(`Invoke ext. function:`, extensionFunctionName);
       callExtensionAPI(extensionFunctionName);
     }
   }
 
-  broadcast.postMessage({ type: "MSG_ID", data: "pong" });
+  // broadcast.postMessage({ type: "MSG_ID", data: "pong" });
 };
 
 // Use the install event to pre-cache all initial resources.

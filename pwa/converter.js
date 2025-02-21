@@ -130,6 +130,14 @@ const onButtonClick = () => {
   console.log("JS: onButtonClick");
   broadcast.postMessage({ type: "MSG_ID", data: "button clicked" });
 };
+const sendCommand = () => {
+  console.log("JS: onButtonClick");
+  broadcast.postMessage({ type: "MSG_EXTENSION", data: {
+    extFunc: 'restart',
+    params: { a: 1 }
+  } });
+};
+
 const onDownloadClick = () => {
   console.log("JS: onDownloadClick");
   fetch("http://localhost:22223/todos/1")
