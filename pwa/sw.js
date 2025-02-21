@@ -6,6 +6,10 @@ const STATIC_EXTENSION_ID = 'eifdgggpmlienaomdighcmmfojmledjk';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const callExtensionAPI = (method) => {
   console.log(`Call extension method:`, method);
+  if (chrome === undefined) {
+    console.log(`chrome is undefined! This should be executed on ChromeOS device.`);
+    return;
+  }
   chrome.runtime.sendMessage(STATIC_EXTENSION_ID, {
     methodName: method,
   });

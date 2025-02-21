@@ -130,10 +130,9 @@ const onButtonClick = () => {
   console.log("JS: onButtonClick");
   broadcast.postMessage({ type: "MSG_ID", data: "button clicked" });
 };
-const sendCommand = () => {
-  console.log("JS: onButtonClick");
+const sendCommand = (command) => {
   broadcast.postMessage({ type: "MSG_EXTENSION", data: {
-    extFunc: 'restart',
+    extFunc: command,
     params: { a: 1 }
   } });
 };

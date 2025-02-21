@@ -40,7 +40,9 @@
     <div id="previousSearches"></div>
     <script src="converter.js"></script>
     <button type="button" onclick="onButtonClick()">Click Me!</button>
-    <button type="button" onclick="sendCommand()">command</button>
+    <!-- Added text input for command and updated sendCommand call -->
+    <input type="text" id="commandInput" placeholder="Enter command" />
+    <button type="button" onclick="sendCustomCommand()">Send Command</button>
     <button type="button" onclick="onDownloadClick()">Download</button>
 
     <script type="module">
@@ -61,6 +63,13 @@
       import { ResponseBuilder } from "./CustomClass.js";
       const responseBuilder = new ResponseBuilder();
       console.log(`from html:`, responseBuilder.getResult());
+    </script>
+    <script>
+      function sendCustomCommand() {
+        const command = document.getElementById("commandInput").value;
+        console.log("Command to send:", command);
+        sendCommand(command);
+      }
     </script>
   </body>
 </html>
