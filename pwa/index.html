@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <link rel="shortcut icon" href="https://c.s-microsoft.com/favicon.ico?v2" />
-    <link rel="manifest" href="/manifest.json" />
+    <link rel="manifest" href="manifest.json" />
     <link rel="stylesheet" href="converter.css" />
     <title>Temperature converter</title>
     <script>
@@ -47,7 +47,7 @@
 
     <script type="module">
       if ("serviceWorker" in navigator) {
-        navigator.serviceWorker.register("/sw.js", { type: "module" }).then(
+        navigator.serviceWorker.register("sw.js", { type: "module" }).then(
           (registration) => {
             console.log("Service worker registration succeeded:", registration);
           },
